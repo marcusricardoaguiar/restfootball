@@ -16,7 +16,8 @@ public class Player {
     private Team team;
 
     @Column(nullable = false)
-    private String position;
+    @Enumerated(EnumType.STRING)
+    private Position position;
 
     @Column(nullable = false)
     private int shirtNumber;
@@ -45,11 +46,11 @@ public class Player {
         this.team = team;
     }
 
-    public String getPosition() {
+    public Position getPosition() {
         return position;
     }
 
-    public void setPosition(String position) {
+    public void setPosition(Position position) {
         this.position = position;
     }
 

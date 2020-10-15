@@ -13,7 +13,8 @@ public class Country {
     private String name;
 
     @Column(nullable = false)
-    private String language;
+    @Enumerated(EnumType.STRING)
+    private Language language;
 
     public long getId() {
         return id;
@@ -31,11 +32,11 @@ public class Country {
         this.name = name;
     }
 
-    public String getLanguage() {
+    public Language getLanguage() {
         return language;
     }
 
-    public void setLanguage(String language) {
+    public void setLanguage(Language language) {
         this.language = language;
     }
 }

@@ -1,6 +1,7 @@
 package de.planerio.developertest;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -17,6 +18,7 @@ public class League {
     private Country country;
 
     @OneToMany(targetEntity = Team.class)
+    @Size(max=20)
     private List<Team> teams;
 
     public long getId() {

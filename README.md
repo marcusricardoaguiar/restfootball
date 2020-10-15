@@ -1,3 +1,7 @@
+# Swagger #
+
+http://localhost:8080/swagger-ui/#/
+
 # REST-FOOTBALL #
 
 Welcome, candidates! At this stage of your interview process, you'll need to get your hands (more like fingers) dirty.
