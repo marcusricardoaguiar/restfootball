@@ -1,4 +1,7 @@
-package de.planerio.developertest;
+package de.planerio.developertest.models;
+
+import de.planerio.developertest.models.League;
+import de.planerio.developertest.models.Player;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -21,35 +24,41 @@ public class Team {
     @Size(max=25)
     private List<Player> players;
 
+    public Team(){ }
+
     public long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public Team setId(long id) {
         this.id = id;
+        return this;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public Team setName(String name) {
         this.name = name;
+        return this;
     }
 
     public League getLeague() {
         return league;
     }
 
-    public void setLeague(League league) {
+    public Team setLeague(League league) {
         this.league = league;
+        return this;
     }
 
     public List<Player> getPlayers() {
         return players;
     }
 
-    public void setPlayers(List<Player> players) {
+    public Team setPlayers(List<Player> players) {
         this.players = players;
+        return this;
     }
 }

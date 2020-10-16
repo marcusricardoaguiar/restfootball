@@ -1,4 +1,4 @@
-package de.planerio.developertest;
+package de.planerio.developertest.enums;
 
 import java.util.stream.Stream;
 
@@ -9,17 +9,17 @@ public enum Position {
 
     private String position;
 
-    private Position(String position) {
+    Position(String position) {
         this.position = position;
     }
 
-    public String getPosition() {
+    public String getValue() {
         return position;
     }
 
     public static Position of(String position) {
         return Stream.of(Position.values())
-                .filter(p -> p.getPosition().equals(position))
+                .filter(p -> p.getValue().equals(position))
                 .findFirst()
                 .orElseThrow(IllegalArgumentException::new);
     }

@@ -1,4 +1,6 @@
-package de.planerio.developertest;
+package de.planerio.developertest.models;
+
+import de.planerio.developertest.exceptions.NameEmptyException;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -21,35 +23,43 @@ public class League {
     @Size(max=20)
     private List<Team> teams;
 
+    public League(){ }
+
     public long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public League setId(long id) {
         this.id = id;
+        return this;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public League setName(String name) throws NameEmptyException{
+        if (name == null || name.equals(""))
+            throw new NameEmptyException();
         this.name = name;
+        return this;
     }
 
     public Country getCountry() {
         return country;
     }
 
-    public void setCountry(Country country) {
+    public League setCountry(Country country) {
         this.country = country;
+        return this;
     }
 
     public List<Team> getTeams() {
         return teams;
     }
 
-    public void setTeams(List<Team> teams) {
+    public League setTeams(List<Team> teams) {
         this.teams = teams;
+        return this;
     }
 }

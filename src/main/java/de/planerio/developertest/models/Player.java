@@ -1,4 +1,7 @@
-package de.planerio.developertest;
+package de.planerio.developertest.models;
+
+import de.planerio.developertest.enums.Position;
+import de.planerio.developertest.exceptions.NameEmptyException;
 
 import javax.persistence.*;
 
@@ -22,43 +25,52 @@ public class Player {
     @Column(nullable = false)
     private int shirtNumber;
 
+    public Player(){ }
+
     public long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public Player setId(long id) {
         this.id = id;
+        return this;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public Player setName(String name) throws NameEmptyException{
+        if (name == null || name.equals(""))
+            throw new NameEmptyException();
         this.name = name;
+        return this;
     }
 
     public Team getTeam() {
         return team;
     }
 
-    public void setTeam(Team team) {
+    public Player setTeam(Team team) {
         this.team = team;
+        return this;
     }
 
     public Position getPosition() {
         return position;
     }
 
-    public void setPosition(Position position) {
+    public Player setPosition(Position position) {
         this.position = position;
+        return this;
     }
 
     public int getShirtNumber() {
         return shirtNumber;
     }
 
-    public void setShirtNumber(int shirtNumber) {
+    public Player setShirtNumber(int shirtNumber) {
         this.shirtNumber = shirtNumber;
+        return this;
     }
 }
