@@ -1,8 +1,5 @@
 package de.planerio.developertest.models;
 
-import de.planerio.developertest.models.League;
-import de.planerio.developertest.models.Player;
-
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.util.List;

@@ -29,9 +29,11 @@ public class TeamController {
             @ApiResponse(responseCode = "409",
                     description = "An unexpected error has occurred. The error has been logged and is being investigated.") })
     @GetMapping("/teams")
-    public Page<TeamDTO> getTeams(@Param(value = "page") int page,
-                                      @Param(value = "size") int size) {
-        logger.info("CONTROLLER -> List all teams");
+    public Page<TeamDTO> getTeams(@Param(value = "page") Integer page,
+                                  @Param(value = "size") Integer size) {
+        if (page == null) { page = 0; }
+        if (size == null) { size = 10; }
+        logger.info("CONTROLLER -> List teams - Page: " + page + " Size: " + size);
         return teamService.listTeams(page, size);
     }
 

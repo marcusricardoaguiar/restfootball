@@ -29,10 +29,14 @@ public class PlayerController {
             @ApiResponse(responseCode = "409",
                     description = "An unexpected error has occurred. The error has been logged and is being investigated.") })
     @GetMapping("/players")
-    public Page<PlayerDTO> getPlayers(@Param(value = "page") int page,
-                                      @Param(value = "size") int size) {
-        logger.info("CONTROLLER -> List all players");
-        return playerService.listPlayers(page, size);
+    public Page<PlayerDTO> getPlayers(@Param(value = "position") String position,
+                                      @Param(value = "onlyDefense") Boolean onlyDefense,
+                                      @Param(value = "page") Integer page,
+                                      @Param(value = "size") Integer size) {
+        if (page == null) { page = 0; }
+        if (size == null) { size = 10; }
+        logger.info("CONTROLLER -> List players - Page: " + page + " Size: " + size);
+        return playerService.listPlayers(position, onlyDefense, page, size);
     }
 
     @Operation(

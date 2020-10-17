@@ -29,9 +29,11 @@ public class CountryController {
             @ApiResponse(responseCode = "409",
                          description = "An unexpected error has occurred. The error has been logged and is being investigated.") })
     @GetMapping("/countries")
-    public Page<CountryDTO> getCountries(@Param(value = "0") int page,
-                                         @Param(value = "10") int size) {
-        logger.info("CONTROLLER -> List all countries");
+    public Page<CountryDTO> getCountries(@Param(value = "page") Integer page,
+                                         @Param(value = "size") Integer size) {
+        if (page == null) { page = 0; }
+        if (size == null) { size = 10; }
+        logger.info("CONTROLLER -> List countries - Page: " + page + " Size: " + size);
         return countryService.listCountries(page, size);
     }
 

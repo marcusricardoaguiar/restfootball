@@ -1,5 +1,7 @@
 package de.planerio.developertest.enums;
 
+import de.planerio.developertest.exceptions.PositionInvalidException;
+
 import java.util.stream.Stream;
 
 public enum Position {
@@ -21,6 +23,6 @@ public enum Position {
         return Stream.of(Position.values())
                 .filter(p -> p.getValue().equals(position))
                 .findFirst()
-                .orElseThrow(IllegalArgumentException::new);
+                .orElseThrow(PositionInvalidException::new);
     }
 }

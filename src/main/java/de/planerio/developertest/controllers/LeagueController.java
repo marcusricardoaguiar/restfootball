@@ -29,10 +29,13 @@ public class LeagueController {
             @ApiResponse(responseCode = "409",
                     description = "An unexpected error has occurred. The error has been logged and is being investigated.") })
     @GetMapping("/leagues")
-    public Page<LeagueDTO> getLeagues(@Param(value = "page") int page,
-                                         @Param(value = "size") int size) {
-        logger.info("CONTROLLER -> List all leagues");
-        return leagueService.listLeagues(page, size);
+    public Page<LeagueDTO> getLeagues(@Param(value = "language") String language,
+                                      @Param(value = "page") Integer page,
+                                      @Param(value = "size") Integer size) {
+        if (page == null) { page = 0; }
+        if (size == null) { size = 10; }
+        logger.info("CONTROLLER -> List leagues - Page: " + page + " Size: " + size);
+        return leagueService.listLeagues(language, page, size);
     }
 
     @Operation(
