@@ -1,0 +1,378 @@
+{
+	"variables": [],
+	"info": {
+		"name": "RestFootball",
+		"_postman_id": "a972e7a3-3f03-d984-b66b-03694a4a4963",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Country",
+			"description": "",
+			"item": [
+				{
+					"name": "List Countries",
+					"request": {
+						"url": "{{HOST}}:{{PORT}}/countries",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add Country",
+					"request": {
+						"url": "{{HOST}}:{{PORT}}/country",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"France\",\n\t\"language\": \"fr\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get Country",
+					"request": {
+						"url": "{{HOST}}:{{PORT}}/country/1",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"France X\",\n\t\"language\": \"frX\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Country",
+					"request": {
+						"url": "{{HOST}}:{{PORT}}/country/4",
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Update Country",
+					"request": {
+						"url": "{{HOST}}:{{PORT}}/country/1",
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"France X\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "League",
+			"description": "",
+			"item": [
+				{
+					"name": "List Leagues",
+					"request": {
+						"url": {
+							"raw": "{{HOST}}:{{PORT}}/leagues?page=0&size=2",
+							"host": [
+								"{{HOST}}"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"leagues"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "size",
+									"value": "2",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add League",
+					"request": {
+						"url": "{{HOST}}:{{PORT}}/league",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"League-FR\",\n\t\"country\": {\n\t\t\"id\": 1\n\t},\n\t\"teams\": []\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get League",
+					"request": {
+						"url": "{{HOST}}:{{PORT}}/league/3",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete League",
+					"request": {
+						"url": "{{HOST}}:{{PORT}}/league/3",
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Update League",
+					"request": {
+						"url": "{{HOST}}:{{PORT}}/league/3",
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"\",\n\t\"country\": {\n\t\t\"id\": 2\n\t},\n\t\"teams\": []\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Team",
+			"description": "",
+			"item": [
+				{
+					"name": "List Teams",
+					"request": {
+						"url": "{{HOST}}:{{PORT}}/team",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add Team",
+					"request": {
+						"url": "{{HOST}}:{{PORT}}/team",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"\",\n\t\"league\": {\n\t\t\"id\": 4\n\t},\n\t\"players\": []\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get Team",
+					"request": {
+						"url": "{{HOST}}:{{PORT}}/league/3",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"\",\n\t\"league\": {\n\t\t\"id\": 4\n\t},\n\t\"players\": []\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Team",
+					"request": {
+						"url": "{{HOST}}:{{PORT}}/league/3",
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Update Team",
+					"request": {
+						"url": "{{HOST}}:{{PORT}}/league/3",
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"\",\n\t\"league\": {\n\t\t\"id\": 4\n\t},\n\t\"players\": []\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Player",
+			"description": "",
+			"item": [
+				{
+					"name": "List Player",
+					"request": {
+						"url": "{{HOST}}:{{PORT}}/players",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add Player",
+					"request": {
+						"url": "{{HOST}}:{{PORT}}/player",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"\",\n\t\"team\": {\n\t\t\"id\": 5\n\t},\n\t\"position\": \"\",\n\t\"shirtNumber\": 10\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get Player",
+					"request": {
+						"url": "{{HOST}}:{{PORT}}/league/3",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"\",\n\t\"team\": {\n\t\t\"id\": 5\n\t},\n\t\"position\": \"\",\n\t\"shirtNumber\": 10\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Player",
+					"request": {
+						"url": "{{HOST}}:{{PORT}}/league/3",
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Update Player",
+					"request": {
+						"url": "{{HOST}}:{{PORT}}/league/3",
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"\",\n\t\"team\": {\n\t\t\"id\": 5\n\t},\n\t\"position\": \"\",\n\t\"shirtNumber\": 10\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
