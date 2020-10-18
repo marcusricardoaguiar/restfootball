@@ -329,44 +329,6 @@ class TeamControllerTest {
 		Assertions.assertEquals(message, new NotFoundException().getMessage());
 	}
 
-	/*@Test
-	public void shouldNotCreateTeamPlayerAlreadyExistTest() throws Exception {
-		CountryDTO countryDTO = new CountryDTO();
-		countryDTO.setName("Italy");
-		countryDTO.setLanguage("it");
-		countryDTO = CountryControllerTest.shouldCreateCountry(countryDTO, this.mockMvc);
-
-		LeagueDTO leagueItalyDTO = new LeagueDTO();
-		leagueItalyDTO.setName("Serie A");
-		leagueItalyDTO.setCountry(countryDTO);
-		leagueItalyDTO = LeagueControllerTest.shouldCreateLeague(leagueItalyDTO, this.mockMvc);
-
-		TeamDTO teamA = new TeamDTO();
-		teamA.setName("Juventus");
-		teamA.setLeague(leagueItalyDTO);
-		teamA = shouldCreateTeam(teamA, this.mockMvc);
-
-		PlayerDTO player = new PlayerDTO();
-		player.setName("Cristiano", "Ronaldo");
-		player.setTeam(teamA);
-		player.setPosition("CF");
-		player.setShirtNumber(9);
-		player = PlayerControllerTest.shouldCreatePlayer(player, this.mockMvc);
-
-		TeamDTO teamB = new TeamDTO();
-		teamB.setName("Milan");
-		teamB.setLeague(leagueItalyDTO);
-		player.setTeam(teamB);
-		teamB.setPlayers(Arrays.asList(player));
-		shouldCreateTeam(teamB, this.mockMvc);
-
-		PlayerControllerTest.shouldDeletePlayer(player, this.mockMvc);
-		shouldDeleteTeam(teamA, this.mockMvc);
-		shouldDeleteTeam(teamB, this.mockMvc);
-		LeagueControllerTest.shouldDeleteLeague(leagueItalyDTO, this.mockMvc);
-		CountryControllerTest.shouldDeleteCountry(countryDTO, this.mockMvc);
-	}*/
-
 	@Test
 	public void shouldNotCreateMoreThan20TeamsOnSameLeagueTest() throws Exception {
 		CountryDTO countryItalyDTO = new CountryDTO();
