@@ -12,17 +12,6 @@
 			"description": "",
 			"item": [
 				{
-					"name": "List Countries",
-					"request": {
-						"url": "{{HOST}}:{{PORT}}/countries",
-						"method": "GET",
-						"header": [],
-						"body": {},
-						"description": ""
-					},
-					"response": []
-				},
-				{
 					"name": "Add Country",
 					"request": {
 						"url": "{{HOST}}:{{PORT}}/country",
@@ -36,7 +25,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\": \"France\",\n\t\"language\": \"fr\"\n}"
+							"raw": "{\n\t\"name\": \"FranceX\",\n\t\"language\": \"fr\"\n}"
 						},
 						"description": ""
 					},
@@ -63,32 +52,36 @@
 					"response": []
 				},
 				{
-					"name": "Delete Country",
+					"name": "List Countries",
 					"request": {
-						"url": "{{HOST}}:{{PORT}}/country/4",
-						"method": "DELETE",
+						"url": {
+							"raw": "{{HOST}}:{{PORT}}/countries?page=0&size=10",
+							"host": [
+								"{{HOST}}"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"countries"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "size",
+									"value": "10",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
 						"header": [],
 						"body": {},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Update Country",
-					"request": {
-						"url": "{{HOST}}:{{PORT}}/country/1",
-						"method": "PATCH",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"name\": \"France X\"\n}"
-						},
 						"description": ""
 					},
 					"response": []
@@ -99,6 +92,37 @@
 			"name": "League",
 			"description": "",
 			"item": [
+				{
+					"name": "Add League",
+					"request": {
+						"url": "{{HOST}}:{{PORT}}/league",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"League 1X\",\n\t\"country\": {\n\t\t\"id\": 1\n\t}\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get League",
+					"request": {
+						"url": "{{HOST}}:{{PORT}}/league/2",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
 				{
 					"name": "List Leagues",
 					"request": {
@@ -135,10 +159,10 @@
 					"response": []
 				},
 				{
-					"name": "Add League",
+					"name": "Update League",
 					"request": {
-						"url": "{{HOST}}:{{PORT}}/league",
-						"method": "POST",
+						"url": "{{HOST}}:{{PORT}}/league/2",
+						"method": "PATCH",
 						"header": [
 							{
 								"key": "Content-Type",
@@ -148,19 +172,8 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\": \"League-FR\",\n\t\"country\": {\n\t\t\"id\": 1\n\t},\n\t\"teams\": []\n}"
+							"raw": "{\n\t\"name\": \"League 1\",\n\t\"country\": {\n\t\t\"id\": 1\n\t}\n}"
 						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Get League",
-					"request": {
-						"url": "{{HOST}}:{{PORT}}/league/3",
-						"method": "GET",
-						"header": [],
-						"body": {},
 						"description": ""
 					},
 					"response": []
@@ -175,26 +188,6 @@
 						"description": ""
 					},
 					"response": []
-				},
-				{
-					"name": "Update League",
-					"request": {
-						"url": "{{HOST}}:{{PORT}}/league/3",
-						"method": "PATCH",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"name\": \"\",\n\t\"country\": {\n\t\t\"id\": 2\n\t},\n\t\"teams\": []\n}"
-						},
-						"description": ""
-					},
-					"response": []
 				}
 			]
 		},
@@ -202,17 +195,6 @@
 			"name": "Team",
 			"description": "",
 			"item": [
-				{
-					"name": "List Teams",
-					"request": {
-						"url": "{{HOST}}:{{PORT}}/team",
-						"method": "GET",
-						"header": [],
-						"body": {},
-						"description": ""
-					},
-					"response": []
-				},
 				{
 					"name": "Add Team",
 					"request": {
@@ -227,7 +209,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\": \"\",\n\t\"league\": {\n\t\t\"id\": 4\n\t},\n\t\"players\": []\n}"
+							"raw": "{\n\t\"name\": \"PSG\",\n\t\"league\": {\n\t\t\"id\": 2\n\t}\n}"
 						},
 						"description": ""
 					},
@@ -236,7 +218,7 @@
 				{
 					"name": "Get Team",
 					"request": {
-						"url": "{{HOST}}:{{PORT}}/league/3",
+						"url": "{{HOST}}:{{PORT}}/team/3",
 						"method": "GET",
 						"header": [
 							{
@@ -254,10 +236,10 @@
 					"response": []
 				},
 				{
-					"name": "Delete Team",
+					"name": "List Teams",
 					"request": {
-						"url": "{{HOST}}:{{PORT}}/league/3",
-						"method": "DELETE",
+						"url": "{{HOST}}:{{PORT}}/teams",
+						"method": "GET",
 						"header": [],
 						"body": {},
 						"description": ""
@@ -267,7 +249,7 @@
 				{
 					"name": "Update Team",
 					"request": {
-						"url": "{{HOST}}:{{PORT}}/league/3",
+						"url": "{{HOST}}:{{PORT}}/team/3",
 						"method": "PATCH",
 						"header": [
 							{
@@ -278,8 +260,19 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\": \"\",\n\t\"league\": {\n\t\t\"id\": 4\n\t},\n\t\"players\": []\n}"
+							"raw": "{\n\t\"name\": \"Paris Saint German\",\n\t\"league\": {\n\t\t\"id\": 2\n\t}\n}"
 						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Team",
+					"request": {
+						"url": "{{HOST}}:{{PORT}}/team/4",
+						"method": "DELETE",
+						"header": [],
+						"body": {},
 						"description": ""
 					},
 					"response": []
@@ -291,21 +284,50 @@
 			"description": "",
 			"item": [
 				{
-					"name": "List Player",
+					"name": "Add Player 1",
 					"request": {
-						"url": "{{HOST}}:{{PORT}}/players",
-						"method": "GET",
-						"header": [],
-						"body": {},
+						"url": "{{HOST}}:{{PORT}}/player",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"firstName\": \"Neymar\",\n\t\"lastName\": \"Junior\",\n\t\"team\": {\n\t\t\"id\": 3\n\t},\n\t\"position\": \"ST\",\n\t\"shirtNumber\": 10\n}"
+						},
 						"description": ""
 					},
 					"response": []
 				},
 				{
-					"name": "Add Player",
+					"name": "Add Player 2",
 					"request": {
 						"url": "{{HOST}}:{{PORT}}/player",
 						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"firstName\": \"Thiago\",\n\t\"lastName\": \"Silva\",\n\t\"team\": {\n\t\t\"id\": 3\n\t},\n\t\"position\": \"CB\",\n\t\"shirtNumber\": 4\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get Player",
+					"request": {
+						"url": "{{HOST}}:{{PORT}}/player/5",
+						"method": "GET",
 						"header": [
 							{
 								"key": "Content-Type",
@@ -322,10 +344,79 @@
 					"response": []
 				},
 				{
-					"name": "Get Player",
+					"name": "List Player ALL",
 					"request": {
-						"url": "{{HOST}}:{{PORT}}/league/3",
+						"url": "{{HOST}}:{{PORT}}/players",
 						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "List Player By Position",
+					"request": {
+						"url": {
+							"raw": "{{HOST}}:{{PORT}}/players?position=ST",
+							"host": [
+								"{{HOST}}"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"players"
+							],
+							"query": [
+								{
+									"key": "position",
+									"value": "ST",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "List Player Only Defense ASC",
+					"request": {
+						"url": {
+							"raw": "{{HOST}}:{{PORT}}/players?onlyDefense=ASC",
+							"host": [
+								"{{HOST}}"
+							],
+							"port": "{{PORT}}",
+							"path": [
+								"players"
+							],
+							"query": [
+								{
+									"key": "onlyDefense",
+									"value": "ASC",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Update Player",
+					"request": {
+						"url": "{{HOST}}:{{PORT}}/player/3",
+						"method": "PATCH",
 						"header": [
 							{
 								"key": "Content-Type",
@@ -344,30 +435,10 @@
 				{
 					"name": "Delete Player",
 					"request": {
-						"url": "{{HOST}}:{{PORT}}/league/3",
+						"url": "{{HOST}}:{{PORT}}/player/4",
 						"method": "DELETE",
 						"header": [],
 						"body": {},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Update Player",
-					"request": {
-						"url": "{{HOST}}:{{PORT}}/league/3",
-						"method": "PATCH",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"name\": \"\",\n\t\"team\": {\n\t\t\"id\": 5\n\t},\n\t\"position\": \"\",\n\t\"shirtNumber\": 10\n}"
-						},
 						"description": ""
 					},
 					"response": []
