@@ -1,5 +1,7 @@
 package de.planerio.developertest.models;
 
+import de.planerio.developertest.exceptions.NameEmptyException;
+
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.util.List;
@@ -37,6 +39,8 @@ public class Team {
     }
 
     public Team setName(String name) {
+        if (name == null || name.equals(""))
+            throw new NameEmptyException();
         this.name = name;
         return this;
     }

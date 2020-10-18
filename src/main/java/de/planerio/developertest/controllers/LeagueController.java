@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class LeagueController {
 
-    Logger logger = LoggerFactory.getLogger(LeagueController.class);
+    static final Logger logger = LoggerFactory.getLogger(LeagueController.class);
 
     @Autowired
     private LeagueService leagueService;

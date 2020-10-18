@@ -9,7 +9,7 @@ public enum Position {
         RWB("RWB"), CDM("CDM"), CM("CM"), LM("LM"),
         RM("RM"), CAM("CAM"), ST("ST"), CF("CF");
 
-    private String position;
+    private final String position;
 
     Position(String position) {
         this.position = position;

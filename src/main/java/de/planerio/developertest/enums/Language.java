@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 public enum Language {
     DE("de"), FR("fr"), EN("en"), ES("es"), IT("it");
 
-    private String language;
+    private final String language;
 
     Language(String language) {
         this.language = language;

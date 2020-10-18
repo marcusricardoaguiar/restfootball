@@ -16,12 +16,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class CountryService {
 
-    Logger logger = LoggerFactory.getLogger(CountryService.class);
+    static final Logger logger = LoggerFactory.getLogger(CountryService.class);
 
     @Autowired
     private CountryRepository countryRepository;
@@ -29,20 +28,20 @@ public class CountryService {
     public Page<CountryDTO> listCountries(int page, int size) {
         logger.info("SERVICE -> List all countries");
         Pageable pageable = PageRequest.of(page, size);
-        return CountryConverter.fromEntitytoDTO(countryRepository.findAll(pageable));
+        return CountryConverter.fromEntityToDTO(countryRepository.findAll(pageable));
     }
 
     public CountryDTO addCountry(CountryDTO countryDTO) {
         logger.info("SERVICE -> Add new country");
         Optional<Iterable<Country>> countries = countryRepository.findByName(countryDTO.getName());
         if (countries.isPresent()) throw new NameAlreadyExistException();
-        Country country = CountryConverter.fromDTOtoEntity(countryDTO);
-        return CountryConverter.fromEntitytoDTO(countryRepository.save(country));
+        Country country = CountryConverter.fromDTOToEntity(countryDTO);
+        return CountryConverter.fromEntityToDTO(countryRepository.save(country));
     }
 
     public CountryDTO getCountry(long countryId) {
         logger.info("SERVICE -> Get the country: " + countryId);
-        return CountryConverter.fromEntitytoDTO(countryRepository.findById(countryId).orElseThrow(NotFoundException::new));
+        return CountryConverter.fromEntityToDTO(countryRepository.findById(countryId).orElseThrow(NotFoundException::new));
     }
 
     public void deleteCountry(long countryId) {

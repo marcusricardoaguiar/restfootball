@@ -10,4 +10,5 @@ import java.util.Optional;
 public interface TeamRepository extends PagingAndSortingRepository<Team, Long> {
     Page<Team> findAll(Pageable pageable);
     Optional<Iterable<Team>> findByName(String name);
+    Optional<Iterable<Team>> findByLeagueId(Long leagueId);
 }

@@ -14,51 +14,46 @@ import java.util.stream.StreamSupport;
 
 public abstract class PlayerConverter {
 
-    static Logger logger = LoggerFactory.getLogger(PlayerConverter.class);
+    static final Logger logger = LoggerFactory.getLogger(PlayerConverter.class);
 
-    public static Player fromDTOtoEntity(PlayerDTO playerDTO){
-        Player player = new Player()
+    public static Player fromDTOToEntity(PlayerDTO playerDTO){
+        return new Player()
                 .setId(playerDTO.getId())
-                .setName(playerDTO.getName())
+                .setName(playerDTO.getFirstName(), playerDTO.getLastName())
                 .setPosition(Position.of(playerDTO.getPosition()))
                 .setShirtNumber(playerDTO.getShirtNumber())
-                .setTeam(TeamConverter.fromDTOtoEntity(playerDTO.getTeam()));
-
-        return player;
+                .setTeam(TeamConverter.fromDTOToEntity(playerDTO.getTeam()));
     }
 
-    public static PlayerDTO fromEntitytoDTO(Player player){
+    public static PlayerDTO fromEntityToDTO(Player player){
         PlayerDTO playerDTO = new PlayerDTO();
         playerDTO.setId(player.getId());
-        playerDTO.setName(player.getName());
+        playerDTO.setName(player.getFirstName(), player.getLastName());
         playerDTO.setPosition(player.getPosition().getValue());
         playerDTO.setShirtNumber(player.getShirtNumber());
-        playerDTO.setTeam(TeamConverter.fromEntitytoDTO(player.getTeam()));
+        playerDTO.setTeam(TeamConverter.fromEntityToDTO(player.getTeam()));
 
         return playerDTO;
     }
 
-    public static List<Player> fromDTOtoEntity(Iterable<PlayerDTO> playersDTO){
+    public static List<Player> fromDTOToEntity(Iterable<PlayerDTO> playersDTO){
         logger.info("CONVERTER -> from Iterable<PlayerDTO> to Iterable<Player>");
-        List<Player> players = StreamSupport
+        return StreamSupport
                 .stream(playersDTO.spliterator(), false)
-                .map(c -> fromDTOtoEntity(c)).collect(Collectors.toList());
-        return players;
+                .map(PlayerConverter::fromDTOToEntity).collect(Collectors.toList());
     }
 
-    public static Iterable<PlayerDTO> fromEntitytoDTO(Iterable<Player> players){
+    public static Iterable<PlayerDTO> fromEntityToDTO(Iterable<Player> players){
         logger.info("CONVERTER -> from Iterable<Player> to Iterable<PlayerDTO>");
-        Iterable<PlayerDTO> playersDTO = StreamSupport
+        return StreamSupport
                 .stream(players.spliterator(), false)
-                .map(c -> fromEntitytoDTO(c)).collect(Collectors.toList());
-        return playersDTO;
+                .map(PlayerConverter::fromEntityToDTO).collect(Collectors.toList());
     }
 
-    public static Page<PlayerDTO> fromEntitytoDTO(Page<Player> players){
+    public static Page<PlayerDTO> fromEntityToDTO(Page<Player> players){
         logger.info("CONVERTER -> from Page<Player> to Page<PlayerDTO>");
-        Page<PlayerDTO> playersDTO = new PageImpl<PlayerDTO>(players.stream()
-                .map(c -> fromEntitytoDTO(c))
+        return new PageImpl<>(players.stream()
+                .map(PlayerConverter::fromEntityToDTO)
                 .collect(Collectors.toList()));
-        return playersDTO;
     }
 }

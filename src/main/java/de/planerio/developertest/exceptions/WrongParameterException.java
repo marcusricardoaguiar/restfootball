@@ -4,9 +4,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(code = HttpStatus.BAD_REQUEST)
-public class ShirtNumberException extends RuntimeException {
+public class WrongParameterException extends RuntimeException {
 
-    public ShirtNumberException(){
-        super("Shirt numbers must be in the 1-99 range, inclusive");
+    public WrongParameterException(){
+        super("The query parameter provided is not correct");
     }
 }

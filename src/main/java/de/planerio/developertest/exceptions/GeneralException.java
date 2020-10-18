@@ -16,7 +16,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 public class GeneralException
         extends ResponseEntityExceptionHandler {
 
-    static Logger logger = LoggerFactory.getLogger(CountryConverter.class);
+    static final Logger logger = LoggerFactory.getLogger(CountryConverter.class);
 
     @ExceptionHandler(value
             = { IllegalArgumentException.class, IllegalStateException.class, ConstraintViolationException.class })

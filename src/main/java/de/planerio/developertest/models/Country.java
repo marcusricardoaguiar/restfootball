@@ -2,7 +2,6 @@ package de.planerio.developertest.models;
 
 import de.planerio.developertest.enums.Language;
 import de.planerio.developertest.exceptions.NameEmptyException;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import javax.persistence.*;
 
@@ -19,8 +18,6 @@ public class Country {
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Language language;
-
-    public Country(){ }
 
     public long getId() {
         return id;

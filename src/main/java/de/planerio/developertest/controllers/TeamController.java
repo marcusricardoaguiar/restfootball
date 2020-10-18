@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class TeamController {
 
-    Logger logger = LoggerFactory.getLogger(TeamController.class);
+    static final Logger logger = LoggerFactory.getLogger(TeamController.class);
 
     @Autowired
     private TeamService teamService;

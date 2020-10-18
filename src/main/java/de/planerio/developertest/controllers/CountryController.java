@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class CountryController {
 
-    Logger logger = LoggerFactory.getLogger(CountryController.class);
+    static final Logger logger = LoggerFactory.getLogger(CountryController.class);
 
     @Autowired
     private CountryService countryService;

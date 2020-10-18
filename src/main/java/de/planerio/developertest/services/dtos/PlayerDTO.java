@@ -6,6 +6,10 @@ public class PlayerDTO {
 
     private String name;
 
+    private String firstName;
+
+    private String lastName;
+
     private TeamDTO teamDTO;
 
     private String position;
@@ -20,13 +24,17 @@ public class PlayerDTO {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getName() { return this.name; }
+
+    public void setName(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.name = firstName + " " + lastName;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public String getFirstName() { return firstName; }
+
+    public String getLastName() { return lastName; }
 
     public TeamDTO getTeam() {
         return teamDTO;

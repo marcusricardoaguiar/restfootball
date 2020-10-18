@@ -18,6 +18,12 @@ public class Player {
     @Column(nullable = false)
     private String name;
 
+    @Column(nullable = false)
+    private String firstName;
+
+    @Column(nullable = false)
+    private String lastName;
+
     @ManyToOne(optional = false)
     private Team team;
 
@@ -41,14 +47,12 @@ public class Player {
         return this;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public Player setName(String name) throws NameEmptyException{
-        if (name == null || name.equals(""))
+    public Player setName(String firstName, String lastName) throws NameEmptyException{
+        if ((firstName == null && lastName == null) || (firstName + lastName).equals(""))
             throw new NameEmptyException();
-        this.name = name;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.name = firstName + " " + lastName;
         return this;
     }
 
@@ -78,5 +82,13 @@ public class Player {
         if (shirtNumber > 99 || shirtNumber < 1) throw new ShirtNumberException();
         this.shirtNumber = shirtNumber;
         return this;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
     }
 }

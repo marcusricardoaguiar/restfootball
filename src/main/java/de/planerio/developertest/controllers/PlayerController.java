@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class PlayerController {
 
-    Logger logger = LoggerFactory.getLogger(PlayerController.class);
+    static final Logger logger = LoggerFactory.getLogger(PlayerController.class);
 
     @Autowired
     private PlayerService playerService;
@@ -30,7 +30,7 @@ public class PlayerController {
                     description = "An unexpected error has occurred. The error has been logged and is being investigated.") })
     @GetMapping("/players")
     public Page<PlayerDTO> getPlayers(@Param(value = "position") String position,
-                                      @Param(value = "onlyDefense") Boolean onlyDefense,
+                                      @Param(value = "onlyDefense") String onlyDefense,
                                       @Param(value = "page") Integer page,
                                       @Param(value = "size") Integer size) {
         if (page == null) { page = 0; }

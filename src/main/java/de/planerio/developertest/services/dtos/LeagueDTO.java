@@ -1,7 +1,5 @@
 package de.planerio.developertest.services.dtos;
 
-import java.util.List;
-
 public class LeagueDTO {
 
     private long id;

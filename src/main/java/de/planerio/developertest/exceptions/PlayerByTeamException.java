@@ -1,5 +1,6 @@
 package de.planerio.developertest.exceptions;
 
+import de.planerio.developertest.constants.Constants;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
@@ -7,6 +8,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class PlayerByTeamException extends RuntimeException {
 
     public PlayerByTeamException(){
-        super("There cannot be more than 25 players in a team");
+        super("There cannot be more than " + Constants.PLAYERS_PER_TEAM + " players in a team");
     }
 }
